@@ -1,6 +1,5 @@
 package com.onlinemarket.springboot.controllers;
 
-import com.onlinemarket.springboot.dto.UserDto;
 import com.onlinemarket.springboot.entities.User;
 import com.onlinemarket.springboot.services.UserService;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<User> signup(@RequestBody UserDto userDto){
+    public ResponseEntity<User> signup(@RequestBody User userDto){
         User createdUser = userService.createUser(userDto);
         return ResponseEntity.ok(createdUser);
     }

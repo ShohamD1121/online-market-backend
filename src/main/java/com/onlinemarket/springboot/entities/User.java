@@ -1,15 +1,27 @@
 package com.onlinemarket.springboot.entities;
+
+import java.util.Collection;
+import java.util.List;
 import java.util.UUID;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.onlinemarket.springboot.enums.Role;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name = "users")
-public class User {
+@Data
+public class User implements UserDetails {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,80 +41,43 @@ public class User {
 
     private String phone;
 
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public UUID getId() {
-        return id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
+    @Override
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+        public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+        public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    
-    public String getRole() {
-        return role;
-    }
-    
-    public void setRole(String role) {
-        this.role = role;
-    }
-    
 }
 
 

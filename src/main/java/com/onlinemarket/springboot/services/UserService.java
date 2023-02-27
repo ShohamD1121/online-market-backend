@@ -1,7 +1,7 @@
 package com.onlinemarket.springboot.services;
 
-import com.onlinemarket.springboot.dto.UserDto;
 import com.onlinemarket.springboot.entities.User;
+import com.onlinemarket.springboot.enums.Role;
 import com.onlinemarket.springboot.repositories.UserRepository;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,7 +19,7 @@ public class UserService {
     }
     
 
-    public User createUser(UserDto userDto){
+    public User createUser(User userDto){
         User user = new User();
         user.setUsername(userDto.getUsername());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
@@ -28,7 +28,7 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setAddress(userDto.getAddress());
         user.setPhone(userDto.getPhone());
-        user.setRole("SomeRole"); // Set default role for new users
+        user.setRole(Role.ADMIN); // Set default role for new users
         return userRepository.save(user);
     }
 
