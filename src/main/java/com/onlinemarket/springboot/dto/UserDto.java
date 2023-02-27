@@ -1,6 +1,7 @@
 package com.onlinemarket.springboot.dto;
 
 public class UserDto {
+    
     private String username;
     private String password;
     private String email;

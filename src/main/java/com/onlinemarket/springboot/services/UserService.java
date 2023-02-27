@@ -17,6 +17,7 @@ public class UserService {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
+    
 
     public User createUser(UserDto userDto){
         User user = new User();
@@ -27,7 +28,7 @@ public class UserService {
         user.setLastName(userDto.getLastName());
         user.setAddress(userDto.getAddress());
         user.setPhone(userDto.getPhone());
-        user.setRole("ROLE_USER"); // Set default role for new users
+        user.setRole("SomeRole"); // Set default role for new users
         return userRepository.save(user);
     }
 
