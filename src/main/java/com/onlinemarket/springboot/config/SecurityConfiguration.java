@@ -1,4 +1,4 @@
-package com.onlinemarket.springboot.auth;
+package com.onlinemarket.springboot.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
