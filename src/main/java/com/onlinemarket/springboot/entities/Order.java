@@ -8,9 +8,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name = "orders")
+@Data
 public class Order {
     
     @Id
@@ -35,98 +37,7 @@ public class Order {
 
     private String shippingCarrier;
 
-    private String shippingTrackingNumber;
-
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public UUID getUserId() {
-        return userId;
-    }
-
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public Timestamp getOrderDate() {
-        return orderDate;
-    }
-
-    public void setOrderDate(Timestamp orderDate) {
-        this.orderDate = orderDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public float getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(float totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public String getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Timestamp getShippingDate() {
-        return shippingDate;
-    }
-
-    public void setShippingDate(Timestamp shippingDate) {
-        this.shippingDate = shippingDate;
-    }
-
-    public String getShippingCarrier() {
-        return shippingCarrier;
-    }
-
-    public void setShippingCarrier(String shippingCarrier) {
-        this.shippingCarrier = shippingCarrier;
-    }
-
-    public String getShippingTrackingNumber() {
-        return shippingTrackingNumber;
-    }
-    
-    public void setShippingTrackingNumber(String shippingTrackingNumber) {
-        this.shippingTrackingNumber = shippingTrackingNumber;
-    }
-
-    
+    private String shippingTrackingNumber;    
 
 }
 
