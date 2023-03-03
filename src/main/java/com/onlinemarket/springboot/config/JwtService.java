@@ -32,10 +32,10 @@ public class JwtService {
     }
 
     public String generateToken(UserDetails userDetails){
-        return generateToken(new HashMap<>(), userDetails);
+        return generateNewToken(new HashMap<>(), userDetails);
     } 
 
-    public String generateToken(
+    public String generateNewToken(
         Map<String, Object> extraClaims,
         UserDetails userDetails
     ) {
@@ -63,7 +63,12 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token){
-        return Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody();
+        return Jwts
+        .parserBuilder()
+        .setSigningKey(getSignInKey())
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
     }
 
     private Key getSignInKey() {

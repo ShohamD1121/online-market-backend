@@ -9,6 +9,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import lombok.RequiredArgsConstructor;
 
@@ -19,7 +20,8 @@ public class SecurityConfiguration  {
 
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
-    private final LogoutService logoutService;
+    //private final LogoutService logoutService;
+    private final LogoutHandler logoutHandler;
 
     @Bean SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
@@ -39,7 +41,7 @@ public class SecurityConfiguration  {
         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
         .logout()
         .logoutUrl("api/v1/auth/logout")
-        .addLogoutHandler(logoutService)
+        .addLogoutHandler(logoutHandler)
         .logoutSuccessHandler((request,response, authentication) -> SecurityContextHolder.clearContext());
 
         return httpSecurity.build();
