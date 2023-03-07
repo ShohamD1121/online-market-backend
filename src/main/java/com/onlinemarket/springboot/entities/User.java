@@ -36,8 +36,6 @@ public class User implements UserDetails {
     @GeneratedValue
     private UUID id;
 
-    // private String username;
-
     private String email;
 
     private String password;
