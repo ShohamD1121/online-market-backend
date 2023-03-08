@@ -40,6 +40,8 @@ public class User implements UserDetails {
 
     private String password;
 
+    private String username;
+
     private String firstName;
 
     private String lastName;
@@ -66,7 +68,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override
