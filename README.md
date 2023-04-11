@@ -29,8 +29,8 @@ The Notification Service is responsible for sending email notifications to custo
 ## Getting Started
 To get started with the Online Market Backend, you will need to have the following installed:
 
-- Java 11 or higher
-- Maven 3.6 or higher
+- Java 17 or higher
+- Maven 3.9 or higher
 
 ### To build and run the backend, follow these steps:
 
