@@ -25,6 +25,17 @@ The Inventory Service is responsible for keeping track of the availability of pr
 
 The Notification Service is responsible for sending email notifications to customers. It is used by the Order Service to send a confirmation email to the customer after an order has been successfully placed.
 
+### Authentication
+
+This application uses KeyCloak for authentication. KeyCloak is a powerful and flexible open-source identity and access management solution that allows you to secure your applications and services with minimum fuss. 
+
+### Discovery Server
+
+This application uses Eureka for service discovery. Eureka is a REST-based service that is primarily used in the AWS cloud for locating services for the purpose of load balancing and failover of middle-tier servers.
+
+### API Gateway
+
+All the microservices in this application are connected to an API Gateway. The API Gateway acts as a single entry point for all the microservices, providing a unified interface for the frontend to interact with the backend. This makes it easier to manage and monitor the microservices, and enables you to add new microservices without modifying the frontend code.
 
 ## Getting Started
 To get started with the Online Market Backend, you will need to have the following installed:
