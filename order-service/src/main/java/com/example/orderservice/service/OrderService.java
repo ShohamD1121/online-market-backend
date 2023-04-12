@@ -13,6 +13,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -44,15 +45,18 @@ public class OrderService {
                 .bodyToMono(InventoryResponse[].class)
                 .block();
 
-        assert inventoryResponseArray != null;
+        if(Arrays.toString(inventoryResponseArray).equals("[]")) {
+            throw new IllegalArgumentException("Product is not in stock, please try agian later.");
+        }
+
         boolean allProductsInStock = Arrays
-                .stream(inventoryResponseArray)
+                .stream(Objects.requireNonNull(inventoryResponseArray))
                 .allMatch(InventoryResponse::isInStock);
 
         if(allProductsInStock){
             orderRepository.save(order);
         } else {
-            throw new IllegalArgumentException("Product is not in stock, please try agian later.");
+            throw new IllegalArgumentException("One or more of the Products is out of stock, please try agian later.");
         }
     }
 
