@@ -45,10 +45,10 @@ To get started with the Online Market Backend, you will need to have the followi
 
 ### To build and run the backend, follow these steps:
 
-1. Clone the repository
-2. Navigate to the root directory of the project
-3. Run the following command to build the project: mvn clean install
-4. Navigate to the directory of the microservice you want to run
-5. Run the following command to start the microservice: mvn spring-boot:run
+1. Clone the repository.
+2. Navigate to the root directory of the project.
+3. Run the following command to build the project: mvn clean install.
+4. Navigate to the directory of the microservice you want to run.
+5. Run the following command to start the microservice: mvn spring-boot:run.
 6. Once the microservice is up and running, you can access its endpoints through the appropriate URL.
 
